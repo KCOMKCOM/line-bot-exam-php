@@ -20,7 +20,7 @@ if($events['events'][0]['message']['type'] == 'image'){
 
 
 				$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
-				$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '50790bf0d5ecfcf0f4b08de2c24c5ab6']);
+				$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '2bac43504e686b23ae42080ae49839f8']);
 				$response = $bot->getMessageContent($message_id);
 				if ($response->isSucceeded()) {
    				 	$tempfile = tmpfile();
