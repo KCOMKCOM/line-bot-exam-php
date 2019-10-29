@@ -14,7 +14,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['source']['userId'];
-			$text = $event['source']['displayName'];
+			$name = $event['source']['displayName'];
 		//	$name = 'KCOM';
 			// Get replyToken
 			$replyToken = $event['replyToken'];
