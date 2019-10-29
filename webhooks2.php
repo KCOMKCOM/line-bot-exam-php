@@ -7,7 +7,7 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
-$name2 = $events['displayName'];
+$name2 = $events[displayName];
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
