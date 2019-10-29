@@ -6,6 +6,9 @@ $access_token = 'WY2wFbKtnviUHzPKCrPS5QF9GrPfM3hOBTqocaL0OEjW3hzEBUh+MUcp0mjWKxX
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
+
+$name2 = $events['displayName'];
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -18,7 +21,7 @@ if (!is_null($events['events'])) {
 			
 			$name1 = 'KCOM';
 			
-			$name2 = $event['source']['displayName'];
+		//	$name2 = $event['source']['displayName'];
 			
 			
 		//	$name = $event['source']['displayName'];
