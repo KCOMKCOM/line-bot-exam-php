@@ -125,7 +125,7 @@ if(!is_null($events)){
                             // $userData['displayName']
                             // $userData['pictureUrl']
                             // $userData['statusMessage']
-                            $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'].$userData['statusMessage'];             
+                            $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'].'statusMessage '.$userData['statusMessage'];             
                             $replyData = new TextMessageBuilder($textReplyMessage);         
                             break;              
                         }
