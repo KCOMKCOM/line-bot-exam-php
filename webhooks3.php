@@ -142,26 +142,13 @@ if(!is_null($events)){
     }   
  
  
-                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
-                        $response = $bot->getProfile($userID);
-                        if ($response->isSucceeded()) {
-                            // ดึงค่าโดยแปลจาก JSON String .ให้อยู่ใรูปแบบโครงสร้าง ตัวแปร array 
-                            $userData = $response->getJSONDecodedBody(); // return array     
-                            // $userData['userId']
-                            // $userData['displayName']
-                            // $userData['pictureUrl']
-                            // $userData['statusMessage']
-                            $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];             
-                            $replyData = new TextMessageBuilder($textReplyMessage); 
- 
- 
      
     // ถ้า bot ถูกเพื่มเป้นเพื่อน หรือถูกติดตาม หรือ ยกเลิกการ บล็อก
     if(!is_null($eventFollow)){
      
         $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา";    
      
-        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
+        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID/sourceId ของผู้ใช้ LINE ไปดึงข้อมูล
         $response = $bot->getProfile($sourceId);
       
         // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
