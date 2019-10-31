@@ -154,7 +154,7 @@ if(!is_null($events)){
     // ถ้า bot ถูกเพื่มเป้นเพื่อน หรือถูกติดตาม หรือ ยกเลิกการ บล็อก
     if(!is_null($eventFollow)){
      
-        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา";    
+        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา:: ".$sourceId;
      
         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID/sourceId ของผู้ใช้ LINE ไปดึงข้อมูล
         $response = $bot->getProfile($sourceId);
