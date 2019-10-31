@@ -161,8 +161,7 @@ if(!is_null($events)){
         $textReplyMessage2 = 'สวัสดีครับ คุณ '.$userData['displayName'];   
      
      
-        //$replyData = new TextMessageBuilder($textReplyMessage.'<br />'.$textReplyMessage2.'<br />'.$textReplyMessage1);    
-        $replyData = new TextMessageBuilder($textReplyMessage.$textReplyMessage2.$textReplyMessage1);
+        $replyData = new TextMessageBuilder($textReplyMessage.$textReplyMessage2.$textReplyMessage1);    
      
 //        // กรณีไม่สามารถดึงข้อมูลได้ ให้แสดงสถานะ และข้อมูลแจ้ง ถ้าไม่ต้องการแจ้งก็ปิดส่วนนี้ไปก็ได้
 //        $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
