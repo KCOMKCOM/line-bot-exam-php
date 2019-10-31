@@ -142,19 +142,40 @@ if(!is_null($events)){
     }   
  
  
+                         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
+                        $response = $bot->getProfile($userID);
+                        if ($response->isSucceeded()) {
+                            // ดึงค่าโดยแปลจาก JSON String .ให้อยู่ใรูปแบบโครงสร้าง ตัวแปร array 
+                            $userData = $response->getJSONDecodedBody(); // return array     
+                            // $userData['userId']
+                            // $userData['displayName']
+                            // $userData['pictureUrl']
+                            // $userData['statusMessage']
+                            $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];             
+                            $replyData = new TextMessageBuilder($textReplyMessage); 
  
  
      
     // ถ้า bot ถูกเพื่มเป้นเพื่อน หรือถูกติดตาม หรือ ยกเลิกการ บล็อก
     if(!is_null($eventFollow)){
-        $textReplyMessage1 = "ขอบคุณที่เป็นเพื่อน และติดตามเรา:: ".$sourceId;    
      
-     // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
+        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา";    
+     
+        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
         $response = $bot->getProfile($sourceId);
-       
+      
         // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
-        $textReplyMessage = $response->getRawBody(); // return string            
-        $replyData = new TextMessageBuilder($textReplyMessage1.$textReplyMessage);         
+        $textReplyMessage1 = $response->getRawBody(); // return string
+        
+        $userData = $response->getJSONDecodedBody(); // return array     
+        // $userData['userId']
+        // $userData['displayName']
+        // $userData['pictureUrl']
+        // $userData['statusMessage']
+        $textReplyMessage2 = 'สวัสดีครับ คุณ '.$userData['displayName'];   
+     
+     
+        $replyData = new TextMessageBuilder($textReplyMessage.'<br>'.$textReplyMessage2.'<br>'.$textReplyMessage1);         
      
 //        // กรณีไม่สามารถดึงข้อมูลได้ ให้แสดงสถานะ และข้อมูลแจ้ง ถ้าไม่ต้องการแจ้งก็ปิดส่วนนี้ไปก็ได้
 //        $failMessage = json_encode($response->getHTTPStatus() . ' ' . $response->getRawBody());
