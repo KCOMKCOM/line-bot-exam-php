@@ -148,14 +148,14 @@ if(!is_null($events)){
      
     // ถ้า bot ถูกเพื่มเป้นเพื่อน หรือถูกติดตาม หรือ ยกเลิกการ บล็อก
     if(!is_null($eventFollow)){
-     //   $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา";       
+        $textReplyMessage1 = "ขอบคุณที่เป็นเพื่อน และติดตามเรา";       
      
      // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID ของผู้ใช้ LINE ไปดึงข้อมูล
         $response = $bot->getProfile($userID);
         if ($response->isSucceeded()) {
         // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
            $textReplyMessage = $response->getRawBody(); // return string            
-           $replyData = new TextMessageBuilder($textReplyMessage);         
+           $replyData = new TextMessageBuilder($textReplyMessage1.$textReplyMessage);         
             break;              
         }
         // กรณีไม่สามารถดึงข้อมูลได้ ให้แสดงสถานะ และข้อมูลแจ้ง ถ้าไม่ต้องการแจ้งก็ปิดส่วนนี้ไปก็ได้
