@@ -150,7 +150,7 @@ if(!is_null($events)){
         $response = $bot->getProfile($sourceId);
       
         // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
-        $textReplyMessage1 = $response->getRawBody(); // return string
+//        $textReplyMessage1 = $response->getRawBody(); // return string
         
         $userData = $response->getJSONDecodedBody(); // return array     
         // $userData['userId']
@@ -158,9 +158,12 @@ if(!is_null($events)){
         // $userData['pictureUrl']
         // $userData['statusMessage']
         $textReplyMessage2 = 'สวัสดีครับ คุณ '.$userData['displayName'];   
+        $textReplyMessage3 = 'userId = '.$userData['userId'];  
+        $textReplyMessage4 = 'pictureUrl = '.$userData['pictureUrl'];  
+        $textReplyMessage5 = 'สถาณะข้อความ  '.$userData['statusMessage']; 
      
          
-        $replyData = new TextMessageBuilder($textReplyMessage.'<br>'.$textReplyMessage2.'<br>'.$textReplyMessage1);
+        $replyData = new TextMessageBuilder($textReplyMessage.'<br>'.$textReplyMessage2.'<br>'.$textReplyMessage3.'<br>'.$textReplyMessage4.'<br>'.$textReplyMessage5);
      
     }
      
