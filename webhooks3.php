@@ -163,7 +163,7 @@ if(!is_null($events)){
         $textReplyMessage5 = 'สถาณะข้อความ  '.$userData['statusMessage']; 
      
          
-        $replyData = new TextMessageBuilder($textReplyMessage.'<br>'.$textReplyMessage2.'<br>'.$textReplyMessage3.'<br>'.$textReplyMessage4.'<br>'.$textReplyMessage5);
+        $replyData = new TextMessageBuilder($textReplyMessage."\n".$textReplyMessage2."\n".$textReplyMessage3."\n".$textReplyMessage4."\n".$textReplyMessage5);
      
     }
      
