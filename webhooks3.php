@@ -144,7 +144,7 @@ if(!is_null($events)){
     // ถ้า bot ถูกเพื่มเป้นเพื่อน หรือถูกติดตาม หรือ ยกเลิกการ บล็อก
     if(!is_null($eventFollow)){
      
-        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา";
+        $textReplyMessage = "ขอบคุณที่เป็นเพื่อนกับเรา";
      
         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID/sourceId ของผู้ใช้ LINE ไปดึงข้อมูล
         $response = $bot->getProfile($sourceId);
@@ -157,10 +157,10 @@ if(!is_null($events)){
         // $userData['displayName']
         // $userData['pictureUrl']
         // $userData['statusMessage']
-        $textReplyMessage2 = 'สวัสดีครับ คุณ '.$userData['displayName'];   
+        $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
         $textReplyMessage3 = 'userId = '.$userData['userId'];  
         $textReplyMessage4 = 'pictureUrl = '.$userData['pictureUrl'];  
-        $textReplyMessage5 = 'สถาณะข้อความ  '.$userData['statusMessage']; 
+        $textReplyMessage5 = 'สถานะข้อความ  '.$userData['statusMessage']; 
      
          
         $replyData = new TextMessageBuilder($textReplyMessage."\n".$textReplyMessage2."\n".$textReplyMessage3."\n".$textReplyMessage4."\n".$textReplyMessage5);
