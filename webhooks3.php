@@ -143,7 +143,7 @@ if(!is_null($events)){
      
     // ถ้า bot ถูกเพื่มเป้นเพื่อน หรือถูกติดตาม หรือ ยกเลิกการ บล็อก
     if(!is_null($eventFollow)){
-        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา:: ".$sourceId;       
+        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา";        
         $replyData = new TextMessageBuilder($textReplyMessage);                 
     }
      
