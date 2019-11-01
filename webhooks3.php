@@ -338,11 +338,11 @@ if(!is_null($events)){
                         $actionBuilder = array(
                             new MessageTemplateActionBuilder(
                                 'Message Template',// ข้อความแสดงในปุ่ม
-                                'กรุณาเลือกรายการ' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),
                             new UriTemplateActionBuilder(
-                                'Url Template', // ข้อความแสดงในปุ่ม
-                                'http://www.mnst.go.th'
+                                'Uri Template', // ข้อความแสดงในปุ่ม
+                                'https://www.mnst.go.th'
                             ),
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
@@ -364,7 +364,7 @@ if(!is_null($events)){
     //                          'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),      
                         );
-                        $imageUrl = 'http://www.mnst.go.th/mnst/images/Activity/PICHOME/014.jpg';
+                        $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'button template builder', // กำหนดหัวเรื่อง
@@ -373,7 +373,7 @@ if(!is_null($events)){
                                     $actionBuilder  // กำหนด action object
                             )
                         );              
-                        break;                                          
+                        break;                                                           
                     case "n":
                         // ถ้าขณะนั้นเป็นการสนทนาใน ROOM หรือ GROUP
                         if(!is_null($groupId) || !is_null($roomId)){
