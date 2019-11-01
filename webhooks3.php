@@ -143,8 +143,25 @@ if(!is_null($events)){
      
     // ถ้า bot ถูกเพื่มเป้นเพื่อน หรือถูกติดตาม หรือ ยกเลิกการ บล็อก
     if(!is_null($eventFollow)){
-        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา";        
-        $replyData = new TextMessageBuilder($textReplyMessage);                 
+     
+        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา:: ".$sourceId;
+     
+        // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID/sourceId ของผู้ใช้ LINE ไปดึงข้อมูล
+        $response = $bot->getProfile($sourceId);
+      
+        // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
+        $textReplyMessage1 = $response->getRawBody(); // return string
+        
+        $userData = $response->getJSONDecodedBody(); // return array     
+        // $userData['userId']
+        // $userData['displayName']
+        // $userData['pictureUrl']
+        // $userData['statusMessage']
+        $textReplyMessage2 = 'สวัสดีครับ คุณ '.$userData['displayName'];   
+     
+         
+        $replyData = new TextMessageBuilder($textReplyMessage.$textReplyMessage2.$textReplyMessage1);
+     
     }
      
     // ถ้า bot ถูกบล็อก หรือเลิกติดตาม จะไม่สามารถส่งข้อความกลับได้ เนื่องจากไม่มี replyToken
