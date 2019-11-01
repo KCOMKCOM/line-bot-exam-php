@@ -160,7 +160,7 @@ if(!is_null($events)){
         $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
         $textReplyMessage3 = 'userId = '.$userData['userId'];  
         $textReplyMessage4 = 'pictureUrl = '.$userData['pictureUrl'];  
-        $textReplyMessage5 = 't_b : เข้าสู่เมนู, n : แสดงชื่อ   '; 
+        $textReplyMessage5 = 'm : เข้าสู่เมนู, n : แสดงชื่อ   '; 
      
          
         $replyData = new TextMessageBuilder($textReplyMessage."\n".$textReplyMessage2."\n".$textReplyMessage3."\n".$textReplyMessage4."\n".$textReplyMessage5);
@@ -333,7 +333,7 @@ if(!is_null($events)){
             case 'text':  // ถ้าเป็นข้อความ
                 $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
                 switch ($userMessage) {
-                    case "t_b":
+                    case "m":
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new MessageTemplateActionBuilder(
@@ -342,7 +342,7 @@ if(!is_null($events)){
                             ),
                             new UriTemplateActionBuilder(
                                 'Uri Template', // ข้อความแสดงในปุ่ม
-                                'https://www.ninenik.com'
+                                'https://www.mnst.go.th'
                             ),
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
