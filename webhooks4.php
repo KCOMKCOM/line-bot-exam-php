@@ -144,13 +144,13 @@ if(!is_null($events)){
     // ถ้า bot ถูกเพื่มเป้นเพื่อน หรือถูกติดตาม หรือ ยกเลิกการ บล็อก
     if(!is_null($eventFollow)){
      
-        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา:: ".$sourceId;
+        $textReplyMessage = "ขอบคุณที่เป็นเพื่อน และติดตามเรา";
      
         // เรียกดูข้อมูลโพรไฟล์ของ Line user โดยส่งค่า userID/sourceId ของผู้ใช้ LINE ไปดึงข้อมูล
         $response = $bot->getProfile($sourceId);
       
         // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
-        $textReplyMessage1 = $response->getRawBody(); // return string
+//        $textReplyMessage1 = $response->getRawBody(); // return string
         
         $userData = $response->getJSONDecodedBody(); // return array     
         // $userData['userId']
@@ -158,9 +158,12 @@ if(!is_null($events)){
         // $userData['pictureUrl']
         // $userData['statusMessage']
         $textReplyMessage2 = 'สวัสดีครับ คุณ '.$userData['displayName'];   
+        $textReplyMessage3 = 'userId = '.$userData['userId'];  
+        $textReplyMessage4 = 'pictureUrl = '.$userData['pictureUrl'];  
+        $textReplyMessage5 = 'สถาณะข้อความ  '.$userData['statusMessage']; 
      
          
-        $replyData = new TextMessageBuilder($textReplyMessage.$textReplyMessage2.$textReplyMessage1);
+        $replyData = new TextMessageBuilder($textReplyMessage.'<br>'.$textReplyMessage2.'<br>'.$textReplyMessage3.'<br>'.$textReplyMessage4.'<br>'.$textReplyMessage5);
      
     }
      
