@@ -160,7 +160,7 @@ if(!is_null($events)){
         $textReplyMessage2 = 'สวัสดีครับ คุณ '.$userData['displayName'];   
      
          
-        $replyData = new TextMessageBuilder($textReplyMessage.$textReplyMessage2.$textReplyMessage1);
+        $replyData = new TextMessageBuilder($textReplyMessage.'<br />'.$textReplyMessage2.'<br />'.$textReplyMessage1);
      
     }
      
