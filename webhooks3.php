@@ -160,7 +160,7 @@ if(!is_null($events)){
         $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
         $textReplyMessage3 = 'userId = '.$userData['userId'];  
         $textReplyMessage4 = 'pictureUrl = '.$userData['pictureUrl'];  
-        $textReplyMessage5 = 'สถานะข้อความ  '.$userData['statusMessage']; 
+        $textReplyMessage5 = 'm : เข้าสู่เมนู, n : แสดงชื่อ   '; 
      
          
         $replyData = new TextMessageBuilder($textReplyMessage."\n".$textReplyMessage2."\n".$textReplyMessage3."\n".$textReplyMessage4."\n".$textReplyMessage5);
@@ -333,16 +333,16 @@ if(!is_null($events)){
             case 'text':  // ถ้าเป็นข้อความ
                 $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
                 switch ($userMessage) {
-                    case "t_b":
+                    case "m":
                         // กำหนด action 4 ปุ่ม 4 ประเภท
                         $actionBuilder = array(
                             new MessageTemplateActionBuilder(
                                 'Message Template',// ข้อความแสดงในปุ่ม
-                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
+                                'กรุณาเลือกรายการ' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),
                             new UriTemplateActionBuilder(
-                                'Uri Template', // ข้อความแสดงในปุ่ม
-                                'https://www.ninenik.com'
+                                'Url Template', // ข้อความแสดงในปุ่ม
+                                'http://www.mnst.go.th'
                             ),
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
@@ -364,7 +364,7 @@ if(!is_null($events)){
     //                          'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),      
                         );
-                        $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
+                        $imageUrl = 'http://www.mnst.go.th/mnst/images/Activity/PICHOME/014.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'button template builder', // กำหนดหัวเรื่อง
@@ -374,7 +374,7 @@ if(!is_null($events)){
                             )
                         );              
                         break;                                          
-                    case "p":
+                    case "n":
                         // ถ้าขณะนั้นเป็นการสนทนาใน ROOM หรือ GROUP
                         if(!is_null($groupId) || !is_null($roomId)){
                             if($eventObj->isGroupEvent()){// ถ้าอยู่ใน GROUP
