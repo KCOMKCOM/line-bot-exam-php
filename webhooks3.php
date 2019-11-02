@@ -364,7 +364,7 @@ if(!is_null($events)){
     //                          'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),      
                         );
-                        $imageUrl = 'http://www.mnst.go.th/mnst/images/hospital/logo.jpg';
+                        $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'button template builder', // กำหนดหัวเรื่อง
