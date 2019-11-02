@@ -153,13 +153,14 @@ if(!is_null($events)){
 //        $textReplyMessage1 = $response->getRawBody(); // return string
         
         $userData = $response->getJSONDecodedBody(); // return array     
+     
         $userId = $userData['userId'];
         $displayName = $userData['displayName'];
         $pictureUrl = $userData['pictureUrl'];
          
-        $sql = "INSERT INTO tb_lineofficial VALUES(null,'$userId','$displayName',null,'$pictureUrl',null,null,null,null,null,null,null,null,CURDATE())";
+//        $sql = "INSERT INTO tb_lineofficial VALUES(null,'$userId','$displayName',null,'$pictureUrl',null,null,null,null,null,null,null,null,CURDATE())";
 
-        $result = mysqli_query($link, $sql); 
+//        $result = mysqli_query($link, $sql); 
          
         $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
         $textReplyMessage3 = 'userId = '.$userData['userId'];  
@@ -457,5 +458,5 @@ if ($response->isSucceeded()) {
 }
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-mysqli_close($link);
+// mysqli_close($link);
 ?>
