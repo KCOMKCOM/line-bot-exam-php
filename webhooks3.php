@@ -160,9 +160,9 @@ if(!is_null($events)){
      
         $link = mysqli_connect("61.7.241.82", "root", "KCOM789456", "line_notify");
          
-        $sql = "INSERT INTO tb_lineofficial VALUES(null,'$userId','$displayName',null,'$pictureUrl',null,null,null,null,null,null,null,null,CURDATE())";
+//        $sql = "INSERT INTO tb_lineofficial VALUES(null,'$userId','$displayName',null,'$pictureUrl',null,null,null,null,null,null,null,null,CURDATE())";
 
-        $result = mysqli_query($link, $sql); 
+//        $result = mysqli_query($link, $sql); 
          
         $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
         $textReplyMessage3 = 'userId = '.$userData['userId'];  
