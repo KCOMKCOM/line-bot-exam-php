@@ -1,11 +1,9 @@
 <?php
-$host = "61.7.241.82" ;
-$userr = "root";
-$pwd = "KCOM789456" ;
-$dbname = "line_notify";
-$link = mysqli_connect($host, $userr, $pwd, $dbname);
-mysqli_query($link, "SET NAMES utf8");
-mysqli_query($link, "SET character_set_results=utf8");
-mysqli_query($link, "SET character_set_client=utf8");
-mysqli_query($link, "SET character_set_connection=utf8");
+$Setup_Server = "61.7.241.70";
+$Setup_User = "root";
+$Setup_Pwd = "KCOM789456" ;
+$Setup_Database = "line_notify";
+mysql_connect($Setup_Server,$Setup_User,$Setup_Pwd);
+mysql_query("use $Setup_Database");
+mysql_query("SET NAMES UTF8");
 ?>
