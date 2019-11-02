@@ -5,13 +5,13 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
  
 // include composer autoload
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
  
 // การตั้งเกี่ยวกับ bot
 require_once 'bot_settings.php';
  
 // กรณีมีการเชื่อมต่อกับฐานข้อมูล
-//require_once("dbconnect.php");
+require_once 'dbconnect.php';
  
 ///////////// ส่วนของการเรียกใช้งาน class ผ่าน namespace
 use LINE\LINEBot;
@@ -153,10 +153,14 @@ if(!is_null($events)){
 //        $textReplyMessage1 = $response->getRawBody(); // return string
         
         $userData = $response->getJSONDecodedBody(); // return array     
-        // $userData['userId']
-        // $userData['displayName']
-        // $userData['pictureUrl']
-        // $userData['statusMessage']
+        $userId = $userData['userId'];
+        $displayName = $userData['displayName'];
+        $pictureUrl = $userData['pictureUrl'];
+         
+        $sql = "INSERT INTO tb_lineofficial VALUES(null,'$userId','$displayName',null,'$pictureUrl',null,null,null,null,null,null,null,null,CURDATE())";
+
+        $result = mysqli_query($link, $sql); 
+         
         $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
         $textReplyMessage3 = 'userId = '.$userData['userId'];  
         $textReplyMessage4 = 'pictureUrl = '.$userData['pictureUrl'];  
@@ -453,4 +457,5 @@ if ($response->isSucceeded()) {
 }
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+mysqli_close($link);
 ?>
