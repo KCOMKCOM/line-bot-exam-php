@@ -11,7 +11,7 @@ require 'vendor/autoload.php';
 require_once 'bot_settings.php';
  
 // กรณีมีการเชื่อมต่อกับฐานข้อมูล
-//include('dbconnect.php');
+include('dbconnect.php');
  
 ///////////// ส่วนของการเรียกใช้งาน class ผ่าน namespace
 use LINE\LINEBot;
@@ -157,8 +157,6 @@ if(!is_null($events)){
         $userId = $userData['userId'];
         $displayName = $userData['displayName'];
         $pictureUrl = $userData['pictureUrl'];
-     
-        $link = mysqli_connect("61.7.241.82", "root", "KCOM789456", "line_notify");
          
 //        $sql = "INSERT INTO tb_lineofficial VALUES(null,'$userId','$displayName',null,'$pictureUrl',null,null,null,null,null,null,null,null,CURDATE())";
 
