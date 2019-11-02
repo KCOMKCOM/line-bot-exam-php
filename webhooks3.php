@@ -160,7 +160,7 @@ if(!is_null($events)){
         $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
         $textReplyMessage3 = 'userId = '.$userData['userId'];  
         $textReplyMessage4 = 'pictureUrl = '.$userData['pictureUrl'];  
-        $textReplyMessage5 = 'm : เข้าสู่เมนู, n : แสดงชื่อ   '; 
+        $textReplyMessage5 = 'M : เข้าสู่เมนู, N : แสดงชื่อ   '; 
      
          
         $replyData = new TextMessageBuilder($textReplyMessage."\n".$textReplyMessage2."\n".$textReplyMessage3."\n".$textReplyMessage4."\n".$textReplyMessage5);
@@ -342,7 +342,7 @@ if(!is_null($events)){
                             ),
                             new UriTemplateActionBuilder(
                                 'Uri Template', // ข้อความแสดงในปุ่ม
-                                'https://www.mnst.go.th'
+                                'http://www.mnst.go.th'
                             ),
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
@@ -364,7 +364,7 @@ if(!is_null($events)){
     //                          'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
                             ),      
                         );
-                        $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
+                        $imageUrl = 'http://www.mnst.go.th/mnst/images/hospital/logo.jpg';
                         $replyData = new TemplateMessageBuilder('Button Template',
                             new ButtonTemplateBuilder(
                                     'button template builder', // กำหนดหัวเรื่อง
@@ -374,7 +374,7 @@ if(!is_null($events)){
                             )
                         );              
                         break;                                          
-                    case "p":
+                    case "n":
                         // ถ้าขณะนั้นเป็นการสนทนาใน ROOM หรือ GROUP
                         if(!is_null($groupId) || !is_null($roomId)){
                             if($eventObj->isGroupEvent()){// ถ้าอยู่ใน GROUP
