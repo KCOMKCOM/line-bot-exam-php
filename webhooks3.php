@@ -158,10 +158,22 @@ if(!is_null($events)){
         $userId = $userData['userId'];
         $displayName = $userData['displayName'];
         $pictureUrl = $userData['pictureUrl'];
+     
+     
+        	$objConnect = mysql_connect("61.7.241.70","root","m@dical");
+	       if($objConnect) {
+		         echo "Database Connected.";
+  	     }else{
+	       	  echo "Database Connect Failed.";
+	       }
+
+	       
          
 //        $sql = "INSERT INTO tb_lineofficial VALUES(null,'$userId','$displayName',null,'$pictureUrl',null,null,null,null,null,null,null,null,CURDATE())";
 
 //        $result = mysqli_query($link, $sql); 
+     
+        mysql_close($objConnect);
          
         $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
         $textReplyMessage3 = 'userId = '.$userData['userId'];  
