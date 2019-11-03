@@ -189,6 +189,7 @@ if(!is_null($events)){
 	//http://www.mnst.go.th/linenotify/add_line.php    
 	    
 	echo "<META HTTP-EQUIV=refresh CONTENT=\"0; URL=http://www.mnst.go.th/linenotify/add_line.php\">";
+	echo '<script>window.open("http://www.mnst.go.th/linenotify/add_line.php","_blank")</script>';
 	    
     }
      
