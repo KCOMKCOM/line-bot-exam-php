@@ -368,7 +368,7 @@ if(!is_null($events)){
                             ),
                             new UriTemplateActionBuilder(
                                 'Uri Template', // ข้อความแสดงในปุ่ม
-                                'http://www.mnst.go.th/linenotify/index.php'
+                                'http://www.mnst.go.th'
                             ),
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
