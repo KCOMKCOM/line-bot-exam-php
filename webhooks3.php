@@ -185,7 +185,11 @@ if(!is_null($events)){
      
          
         $replyData = new TextMessageBuilder($textReplyMessage."\n".$textReplyMessage2."\n".$textReplyMessage3."\n".$textReplyMessage4."\n".$textReplyMessage5);
-     
+        //if $replyData
+	//http://www.mnst.go.th/linenotify/add_line.php    
+	    
+	echo "<META HTTP-EQUIV=refresh CONTENT=\"0; URL=http://www.mnst.go.th/linenotify/add_line.php\">";
+	    
     }
      
     // ถ้า bot ถูกบล็อก หรือเลิกติดตาม จะไม่สามารถส่งข้อความกลับได้ เนื่องจากไม่มี replyToken
@@ -363,7 +367,7 @@ if(!is_null($events)){
                             ),
                             new UriTemplateActionBuilder(
                                 'Uri Template', // ข้อความแสดงในปุ่ม
-                                'http://www.mnst.go.th/linenotify/add_line.php'
+                                'http://www.mnst.go.th/linenotify/index.php'
                             ),
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
