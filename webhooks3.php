@@ -188,8 +188,8 @@ if(!is_null($events)){
         //if $replyData
 	//http://www.mnst.go.th/linenotify/add_line.php    
 	    
-	echo "<META HTTP-EQUIV=refresh CONTENT=\"0; URL=http://www.mnst.go.th/linenotify/add_line.php\">";
-	echo '<script>window.open("http://www.mnst.go.th/linenotify/add_line.php","_blank")</script>';
+	echo "<META HTTP-EQUIV=refresh CONTENT=\"0; URL=61.7.241.82/linenotify/add_line.php\">";
+	echo '<script>window.open("61.7.241.82/linenotify/add_line.php","_blank")</script>';
 	    
     }
      
