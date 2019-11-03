@@ -158,14 +158,17 @@ if(!is_null($events)){
         $userId = $userData['userId'];
         $displayName = $userData['displayName'];
         $pictureUrl = $userData['pictureUrl'];
+	    
+	$_SESSION['userId'] = $userId;
+	$_SESSION['displayName'] = $displayName;    
+      	$_SESSION['$pictureUrl'] = $pictureUrl;
      
-     
-        	$objConnect = mysql_connect("61.7.241.70","root","m@dical");
-	       if($objConnect) {
-		         echo "Database Connected.";
-  	     }else{
-	       	  echo "Database Connect Failed.";
-	       }
+//        $objConnect = mysql_connect("61.7.241.70","root","m@dical");
+//	if($objConnect) {
+//		echo "Database Connected.";
+//  	}else{
+//		echo "Database Connect Failed.";
+//	}
 
 	       
          
@@ -173,7 +176,7 @@ if(!is_null($events)){
 
 //        $result = mysqli_query($link, $sql); 
      
-        mysql_close($objConnect);
+//        mysql_close($objConnect);
          
         $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
         $textReplyMessage3 = 'userId = '.$userData['userId'];  
@@ -360,7 +363,7 @@ if(!is_null($events)){
                             ),
                             new UriTemplateActionBuilder(
                                 'Uri Template', // ข้อความแสดงในปุ่ม
-                                'http://www.mnst.go.th'
+                                'http://www.mnst.go.th/add_line.php'
                             ),
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
