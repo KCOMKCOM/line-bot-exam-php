@@ -11,7 +11,7 @@ require 'vendor/autoload.php';
 require_once 'bot_settings.php';
  
 // กรณีมีการเชื่อมต่อกับฐานข้อมูล
-//include('dbconnect.php');
+include('connect.php');
 //require 'dbconnect.php';
  
 ///////////// ส่วนของการเรียกใช้งาน class ผ่าน namespace
@@ -153,44 +153,44 @@ if(!is_null($events)){
         // ดึงค่ามาแบบเป็น JSON String โดยใช้คำสั่ง getRawBody() กรณีเป้นข้อความ text
 //        $textReplyMessage1 = $response->getRawBody(); // return string
         
-        $userData = $response->getJSONDecodedBody(); // return array     
-     
+        $userData = $response->getJSONDecodedBody(); // return array   
+		
+		$sql = "SELECT MAX(id),vn FROM tb_lineofficial";
+		$result = mysqli_query($link, $sql);
+		$row = mysqli_fetch_row($result);
+		$idmax = $row[0];
+		$vn = $row[1];
+		
+		echo $idmax;
+		echo $vn;
+		 
         $userId = $userData['userId'];
         $displayName = $userData['displayName'];
         $pictureUrl = $userData['pictureUrl'];
 	    
-	$_SESSION['userId'] = $userId;
-	$_SESSION['displayName'] = $displayName;    
+		$_SESSION['userId'] = $userId;
+		$_SESSION['displayName'] = $displayName;    
       	$_SESSION['$pictureUrl'] = $pictureUrl;
-     
-//        $objConnect = mysql_connect("61.7.241.70","root","m@dical");
-//	if($objConnect) {
-//		echo "Database Connected.";
-//  	}else{
-//		echo "Database Connect Failed.";
-//	}
-
-	       
          
-//        $sql = "INSERT INTO tb_lineofficial VALUES(null,'$userId','$displayName',null,'$pictureUrl',null,null,null,null,null,null,null,null,CURDATE())";
-
-//        $result = mysqli_query($link, $sql); 
-     
-//        mysql_close($objConnect);
+        $sql2 = "UPDATE tb_lineofficial SET
+		userId = '$userId' ,
+		displayName = '$displayName' ,
+		pictureUrl = '$pictureUrl' 
+		WHERE id = $idmax ";
+		$result2 = mysqli_query($link, $sql2);
          
-        $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$userData['displayName'];   
-        $textReplyMessage3 = 'userId = '.$userData['userId'];  
-        $textReplyMessage4 = 'pictureUrl = '.$userData['pictureUrl'];  
-        $textReplyMessage5 = 'M : เข้าสู่เมนู, N : แสดงชื่อ   '; 
+        $textReplyMessage2 = 'โรงพยาบาลมหาราชนครศรีธรรมราชยินดีให้บริการคุณ '.$displayName;   
+        $textReplyMessage3 = 'userId = '.$userId;  
+        $textReplyMessage4 = 'pictureUrl = '.$pictureUrl; 
+		$textReplyMessage5 = 'vn = '.$vn; 
+        $textReplyMessage6 = 'พิมพ์ M = เข้าสู่เมนู, N = แสดงชื่อ   '; 
      
-         
-        $replyData = new TextMessageBuilder($textReplyMessage."\n".$textReplyMessage2."\n".$textReplyMessage3."\n".$textReplyMessage4."\n".$textReplyMessage5);
-        //if $replyData
-	//http://www.mnst.go.th/linenotify/add_line.php    
-	    
-	echo "<META HTTP-EQUIV=refresh CONTENT=\"0; URL=61.7.241.82/linenotify/add_line.php\">";
-	echo '<script>window.open("61.7.241.82/linenotify/add_line.php","_blank")</script>';
-	    
+        $replyData = new TextMessageBuilder($textReplyMessage."\n".$textReplyMessage2."\n".$textReplyMessage3."\n".$textReplyMessage4."\n".$textReplyMessage5."\n".$textReplyMessage6);
+	    echo $userId;
+		echo $displayName;
+		echo $pictureUrl;
+		
+		mysqli_close($link);
     }
      
     // ถ้า bot ถูกบล็อก หรือเลิกติดตาม จะไม่สามารถส่งข้อความกลับได้ เนื่องจากไม่มี replyToken
@@ -368,7 +368,7 @@ if(!is_null($events)){
                             ),
                             new UriTemplateActionBuilder(
                                 'Uri Template', // ข้อความแสดงในปุ่ม
-                                'http://www.mnst.go.th'
+                                'http://www.google.co.th'
                             ),
                             new DatetimePickerTemplateActionBuilder(
                                 'Datetime Picker', // ข้อความแสดงในปุ่ม
